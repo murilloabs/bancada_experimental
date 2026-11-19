@@ -1,0 +1,27 @@
+Bancada de Engrenamento 
+
+Objetivo: Fazer uma verificação de modelo dinâmico de engrenagens
+
+Requisitos funcionais:
+- Validação dinâmica
+- primeiro dois pares mas expansível para 4 ou 6
+- utilização de fluido lubrificante ou graxa, dependendo da engrenagem
+- range de torque e velocidade de rotação controlados
+- engrenagens cilindricas de dentes retos podendo alterar para helicoidais 
+- diâmetros e razão de transmissão fixos ou constantes?
+- acionamneto do rotor não pode interferir no sistema dinâmico
+- material das engrenagens de acordo com o utilizado em ambientes reais, aço
+- vibrações externas não podem interferir no sistema
+- isolamento, não pode receber excitação de frequencias externas (determinar a frequências)
+- determinar os deslocamentos máximos e minimos para os sistema
+- medir amplitude de vibração
+- medir temperatura do lubrificante
+- medir nível de oleo
+- medir a defasagem angular entre os eixos
+- quais tolerancias geometrica utilizar para os eixos, engrengens,..?
+- quais a faixa de operação de velocidades
+- controlar o balanceamento do eixo
+- controlar o balanceamento das engrenagens
+- definir a distancia entre mancais
+- monitorar a distância entre centros em operação
+- controlar a folga de montagem estática (backlash inicial)
