@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parecer técnico — bancada de engrenagens</title>
+<style>
+:root{--ink:#172b3a;--muted:#526575;--navy:#123b56;--blue:#176b87;--teal:#0e766e;--pale:#edf5f7;--line:#d7e2e7;--paper:#fff;--gold:#b7791f;--soft:#f6f8fa;--green:#e8f4ef;--orange:#fff4df}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef2f5;color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}.page{max-width:1160px;margin:0 auto;background:var(--paper);box-shadow:0 4px 32px #18364a18}.hero{padding:54px clamp(22px,6vw,76px) 40px;background:linear-gradient(125deg,#123b56,#176b87 72%,#1b827c);color:#fff}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:750;opacity:.8}.hero h1{font-size:clamp(2rem,4.4vw,3.35rem);line-height:1.1;max-width:900px;margin:.55rem 0 1rem}.hero p{max-width:850px;color:#e6f1f5;margin:0}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.tag{border:1px solid #ffffff55;border-radius:99px;padding:5px 12px;font-size:.82rem;color:#f4fafc}.content{padding:30px clamp(20px,5vw,68px) 70px}.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}.toc a{color:var(--navy);text-decoration:none;background:var(--pale);border:1px solid var(--line);border-radius:7px;padding:6px 10px;font-size:.88rem}.toc a:hover{background:#dbeaf0}.lead{font-size:1.12rem;border-left:5px solid var(--teal);padding:12px 18px;background:#f1f8f7;border-radius:0 9px 9px 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 34px}.card{border:1px solid var(--line);background:var(--soft);padding:16px 18px;border-radius:10px}.card strong{display:block;color:var(--navy)}.card span{display:block;color:var(--muted);font-size:.91rem;margin-top:5px}h2{font-size:1.72rem;color:var(--navy);line-height:1.25;margin:2.3em 0 .65em;border-bottom:2px solid var(--line);padding-bottom:9px}h3{font-size:1.22rem;color:var(--blue);margin:1.55em 0 .45em}p{margin:.65em 0}ul,ol{padding-left:1.3em}li{margin:.32em 0}.note{padding:14px 18px;background:var(--orange);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;margin:16px 0}.good{padding:14px 18px;background:var(--green);border-left:4px solid var(--teal);border-radius:0 8px 8px 0;margin:16px 0}.table-wrap{overflow-x:auto;margin:16px 0 24px;border:1px solid var(--line);border-radius:9px}table{border-collapse:collapse;width:100%;min-width:760px;font-size:.93rem}th,td{padding:11px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--navy);color:#fff}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#f7f9fa}.score{text-align:center;font-weight:750;color:var(--navy);white-space:nowrap}.small{font-size:.9rem;color:var(--muted)}.diagram{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px;margin:20px 0}.unit{position:relative;text-align:center;padding:14px 10px;background:#eaf3f6;border:1px solid #cddfe7;border-radius:9px;font-weight:700;color:var(--navy);font-size:.9rem}.unit:not(:last-child):after{content:"→";position:absolute;right:-13px;top:36%;z-index:2;color:var(--teal);font-size:1.15rem;font-weight:800}.unit small{display:block;font-weight:450;color:var(--muted);line-height:1.35;margin-top:4px}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f2f5f8;border:1px solid var(--line);border-radius:6px;padding:11px 14px;display:block;overflow-x:auto;white-space:nowrap;margin:10px 0}.refs{font-size:.9rem}.refs li{padding:5px 0;scroll-margin-top:12px}.refs a{color:#075e83;overflow-wrap:anywhere}.footer{border-top:1px solid var(--line);padding:20px clamp(20px,5vw,68px) 34px;color:var(--muted);font-size:.88rem}
+@media(max-width:760px){.cards{grid-template-columns:1fr}.diagram{grid-template-columns:1fr}.unit:not(:last-child):after{content:"↓";right:49%;top:auto;bottom:-19px}.hero{padding-top:38px}.content{padding-top:20px}}
+@media print{body{background:#fff}.page{box-shadow:none;max-width:none}.hero{print-color-adjust:exact;-webkit-print-color-adjust:exact}.toc{display:none}.table-wrap{overflow:visible}table{min-width:0;font-size:9pt}}
+</style>
+</head>
+<body><div class="page">
+<header class="hero">
+ <div class="eyebrow">Parecer técnico · fontes da pasta Artigos</div>
+ <h1>Proposta de bancada para engrenamento, vibração, rigidez e backlash</h1>
+ <p>Avaliação dos modelos encontrados na literatura e nas fontes técnicas, com uma recomendação de arquitetura simples, medível e expansível para engrenagens cilíndricas retas e helicoidais.</p>
+ <div class="meta"><span class="tag">27 de outubro de 2026</span><span class="tag">25 registros avaliados</span><span class="tag">Par único · um estágio</span></div>
+</header>
+<main class="content">
+<nav class="toc" aria-label="Navegação"><a href="#parecer">Parecer</a><a href="#comparacao">Comparação</a><a href="#arquitetura">Arquitetura</a><a href="#medicoes">Medições</a><a href="#geometria">Troca de engrenagens</a><a href="#oleo">Óleo</a><a href="#etapas">Plano de ensaios</a><a href="#referencias">Referências</a></nav>
+
+<section id="parecer">
+<h2>Parecer executivo</h2>
+<p class="lead"><strong>Recomendação:</strong> construir primeiro uma bancada aberta de um único par de engrenagens, com motor de velocidade controlada em um eixo e freio/carga no outro, montados em uma base rígida. Dois encoders sincronizados medem o erro de transmissão; torquímetro, acelerômetros nos mancais e sondas de proximidade completam a medição. Essa configuração concentra a excitação no par em estudo, facilita a troca de jogos e exige menos componentes do que uma bancada back-to-back ou uma caixa completa.</p>
+<div class="cards">
+<div class="card"><strong>Melhor arquitetura global</strong><span>Par único aberto + motor e freio, com suportes rígidos e distância entre centros controlada.</span></div>
+<div class="card"><strong>Melhor método de stiffness</strong><span>Ensaio quase-estático por encoders e torque, inspirado em Flek et al. [14]; método modal se for necessária stiffness dinâmica [12].</span></div>
+<div class="card"><strong>Melhor método de backlash</strong><span>Reversão lenta de torque e leitura da zona morta angular com dois encoders, repetida ao longo da fase de engrenamento [5, 6].</span></div>
+</div>
+<p>Convém separar três grandezas: <em>backlash geométrico</em> medido quase estaticamente, <em>stiffness de engrenamento</em> medida como resposta carga–deflexão ou identificada dinamicamente, e <em>vibração</em> medida durante a operação. O erro de transmissão é uma ponte útil entre elas, mas não substitui a medição de cada uma.</p>
+<p>Foram revisados 25 registros: 16 artigos científicos e nove fontes institucionais, técnicas ou conceituais. Vinte e quatro ficaram como concluídos na planilha. O PDF #25 é escaneado e não permite leitura textual confiável; sua avaliação usa o resumo e metadados acessíveis, por isso ficou marcado como “Revisitar”.</p>
+</section>
+
+<section id="comparacao">
+<h2>Quais modelos se encaixam melhor</h2>
+<p>A escala é uma síntese de adequação ao projeto (1 = baixa; 5 = alta), não uma pontuação publicada pelos autores. “Vibração” considera a capacidade de instrumentar eixo e engrenagem; aceleração diretamente na engrenagem exige sensores rotativos.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Modelo / referência</th><th>Vibração de eixo e gear</th><th>Mesh stiffness</th><th>Backlash</th><th>Simplicidade</th><th>Avaliação</th></tr></thead>
+<tbody>
+<tr><td><strong>Par único aberto, motor–freio</strong><br>Proposta baseada em [4, 5, 14, 17]</td><td class="score">4</td><td class="score">5</td><td class="score">5</td><td class="score">5</td><td>Melhor compromisso. Acesso ao par, encoder em cada eixo, ensaios estáticos e dinâmicos. Sensores rotativos entram como módulo.</td></tr>
+<tr><td><strong>Rig estático automatizado</strong><br>Flek et al. [14]</td><td class="score">1</td><td class="score">5</td><td class="score">4</td><td class="score">4</td><td>Melhor referência direta para stiffness quasiestática econômica; pode ser um modo/módulo do banco aberto, mas não mede vibração operacional sozinho.</td></tr>
+<tr><td><strong>Par único com centro ajustável</strong><br>Russo et al. [5], Rocca e Russo [6]</td><td class="score">3</td><td class="score">2</td><td class="score">5</td><td class="score">5</td><td>Muito forte para backlash e rattle: ajuste micrométrico e dois encoders. A stiffness não é o foco. Travar o ajuste em apoio rígido antes do ensaio.</td></tr>
+<tr><td><strong>FZG / back-to-back</strong><br>[1, 2, 4, 20]</td><td class="score">4</td><td class="score">3</td><td class="score">2</td><td class="score">1</td><td>Excelente para carga alta e resistência. Duas malhas, torque de fechamento e maior inércia dificultam isolar o par; arquitetura excessiva para a V1.</td></tr>
+<tr><td><strong>Recirculação com motores duplos</strong><br>UNIMORE [13]</td><td class="score">5</td><td class="score">3</td><td class="score">2</td><td class="score">1</td><td>Alta capacidade dinâmica: dois motores de 75 hp, acelerômetros por engrenagem, torquímetros e extração de DTE. Muito além do necessário na primeira versão.</td></tr>
+<tr><td><strong>Kit didático de engrenagens</strong><br>GUNT PT 500.15 [15]</td><td class="score">3</td><td class="score">1</td><td class="score">4</td><td class="score">3</td><td>Boa inspiração para troca de pares retos/helicoidais, ajuste de centro, guarda transparente e lubrificação. Requer base, freio e analisador; não mede stiffness diretamente.</td></tr>
+<tr><td><strong>Simulador industrial de diagnóstico</strong><br>SpectraQuest GDS [16]</td><td class="score">4</td><td class="score">1</td><td class="score">3</td><td class="score">2</td><td>Modular, com opção de engrenagens retas/helicoidais, inversor e freio magnético. Duas etapas e acessórios de diagnóstico elevam a complexidade.</td></tr>
+<tr><td><strong>Bancada de rattle com shaker</strong><br>Barthod et al. [24]</td><td class="score">4</td><td class="score">1</td><td class="score">5</td><td class="score">2</td><td>Especializada em impactos e excitação torcional multi-harmônica. Boa extensão depois de validar o banco básico.</td></tr>
+</tbody></table></div>
+<div class="good"><strong>Escolha recomendada:</strong> par único aberto e ensaio estático de stiffness no mesmo conjunto. O método Flek [14] inspira a medição direta; Rosso et al. [12] oferece extensão modal para stiffness dinâmica, mas usa suportes, mecanismo de massas e travamento rígido em uma bancada dimensionada para até 500 N·m.</div>
+</section>
+
+<section id="arquitetura">
+<h2>Arquitetura proposta</h2>
+<div class="diagram" role="img" aria-label="Motor controlado, encoder, engrenagens e sensores, encoder e freio de carga">
+<div class="unit">Motor + inversor<small>rotação controlada e reversível</small></div><div class="unit">Encoder 1<small>ângulo de entrada</small></div><div class="unit">Par único<small>engrenagens, mancais e sensores</small></div><div class="unit">Encoder 2<small>ângulo de saída</small></div><div class="unit">Freio + torque<small>carga ajustável e medida</small></div>
+</div>
+<ul>
+<li><strong>Estrutura:</strong> placa/base rígida, dois suportes de mancal, um engrenamento e acoplamentos curtos. Fixar os blocos com pinos de referência; usar calços retificados ou cartuchos intercambiáveis para ajustes, travados antes do ensaio.</li>
+<li><strong>Acionamento/carga:</strong> motor com inversor e freio de pó magnético ou dinamômetro no eixo de saída. Medir torque com transdutor em linha ou célula calibrada no braço de reação do freio.</li>
+<li><strong>Instrumentação base:</strong> dois encoders, torquímetro, acelerômetros em cada bloco de mancal, tacômetro e aquisição sincronizada. Dimensionar faixa de frequência e amostragem a partir de rotação máxima, dentes e harmônicos de interesse.</li>
+<li><strong>Vibração do eixo:</strong> sondas de proximidade em pares ortogonais X/Y, junto aos mancais, medem diretamente a órbita do eixo. Acelerômetros nos blocos registram vibração transmitida ao apoio, não o movimento do eixo em si.</li>
+<li><strong>Vibração da engrenagem:</strong> para aceleração direta no gear, usar acelerômetro rotativo em anel/adaptador balanceado e transmitir por anel coletor ou telemetria. Knoll et al. [2] encontraram sinal mais forte para componentes fracas no sensor rotativo; esse arranjo adiciona custo, cabeamento e balanceamento. Prever espaço e canais na V1 e instalar quando necessário.</li>
+<li><strong>Proteção:</strong> guarda transparente fechada e bandeja de óleo com dreno. Evitar que a guarda toque a estrutura instrumentada ou impeça acesso aos sensores.</li>
+</ul>
+<p>A bancada aberta deixa o engrenamento acessível e reduz a influência de uma carcaça. Se o projeto evoluir para ruído irradiado ou caixa completa, acrescentar esse módulo depois, conforme os exemplos NASA [10, 11] e Wischmann et al. [9].</p>
+</section>
+
+<section id="medicoes">
+<h2>Como medir stiffness, backlash e vibração</h2>
+<h3>Rigidez do engrenamento</h3>
+<p>Mapear uma curva quasiestática carga–deflexão ao longo de uma volta de engrenamento: posicionar o par em fases conhecidas, aplicar incrementos de torque em um sentido e ler simultaneamente os dois ângulos. Converter o erro angular relativo à razão ideal em deslocamento na linha de ação, usando raios de base e convenção de sinais definida para o par. A rigidez local é a inclinação entre força de contato e deflexão equivalente:</p>
+<span class="formula">k<sub>m</sub>(φ,T) = ΔF<sub>LOA</sub> / Δδ<sub>LOA</sub>  (na fase φ e carga T ensaiadas)</span>
+<p>Calibrar e descontar a complacência de eixos, mancais, suportes, acoplamentos e base. Repetir contato simples/duplo e carga/descarga. Encoders e torque medido são centrais em Flek [14] e Rosso [12]. A DIC de Raghuwanshi e Parey [23] pode validar deformação local, mas exige óptica.</p>
+<p>Se for necessária <em>stiffness dinâmica em operação</em>, não inferir o valor apenas pela amplitude de vibração. Rosso et al. [12] fixam uma fase, excitam o sistema, combinam acelerômetros, encoders e inércias conhecidas para identificar modos torcionais e estimar stiffness; é uma extensão avançada.</p>
+<h3>Backlash</h3>
+<p>Com rotação nula ou muito baixa e carga pequena, inverter lentamente o torque entre os flancos. A zona angular sem transmissão de carga é o jogo entre flancos. Detectar quando o contato troca de lado, converter em deslocamento na linha de ação e repetir em várias posições de dente. Os métodos de velocidade média nula de Rocca e Russo [6] e a guia micrométrica de Russo et al. [5] sustentam esse procedimento.</p>
+<p>Registrar centro real, torque, direção de reversão e fase. Centro maior altera backlash, ângulo de pressão de operação e razão de contato. Travar os apoios e medir a posição antes/depois; não ajustar centro durante a medição de vibração.</p>
+<h3>Vibração e erro de transmissão</h3>
+<p>Calcular TE pelos ângulos medidos e a razão ideal de dentes, documentando sinais e relações geométricas. Acompanhar ordens de rotação, frequência de engrenamento (GMF), harmônicos e bandas laterais junto com torque e aceleração. Vieira et al. [4] sustenta dois encoders sincronizados; Hotait e Kahraman [3] e Fargère e Velex [7] relacionam TE, deformação e movimento de eixos.</p>
+</section>
+
+<section id="geometria">
+<h2>Engrenagens intercambiáveis e distância entre centros</h2>
+<p>A troca é viável se os pares forem projetados como uma família compatível. Para engrenagens retas, módulo transversal e normal coincidem. Para helicoidais, o módulo transversal depende do módulo normal e do ângulo de hélice:</p>
+<span class="formula">m<sub>t</sub> = m<sub>n</sub> / cos β  a ≈ m<sub>t</sub>(z<sub>1</sub>+z<sub>2</sub>)/2 = m<sub>n</sub>(z<sub>1</sub>+z<sub>2</sub>)/(2 cos β)</span>
+<p><strong>Exemplo ilustrativo, sem correção de perfil:</strong> pinhão de 20 dentes, coroa de 40, módulo normal 2 mm. Par reto (β=0°): <strong>a ≈ 60,0 mm</strong>. Par helicoidal com os mesmos dentes e módulo normal, β=15°: <strong>a ≈ 62,1 mm</strong>, cerca de 2,1 mm a mais. Portanto, um par helicoidal não entra automaticamente no centro do par reto.</p>
+<div class="table-wrap"><table><thead><tr><th>Decisão</th><th>Consequência geométrica</th><th>Recomendação</th></tr></thead><tbody>
+<tr><td>Mesmo centro para ambos os pares</td><td>Manter diâmetros de passo transversais e dentes; especificar módulo/ângulos coerentes com β e validar perfil.</td><td>Melhor para troca rápida. O par helicoidal pode exigir módulo normal e ângulo de pressão normal diferentes.</td></tr>
+<tr><td>Centro diferente por jogo</td><td>Cartuchos/calços próprios, posicionados por pinos e travados rígidos; medir centro e backlash em cada montagem.</td><td>Mais simples com pares padrão de catálogo, desde que o ajuste seja reprodutível.</td></tr>
+<tr><td>Alterar número de dentes</td><td>Altera razão, diâmetros, GMF, velocidades e carga nos dentes.</td><td>Fazer apenas se isso fizer parte do estudo; recalcular tensões, contato, torque e faixa dinâmica.</td></tr>
+</tbody></table></div>
+<p>Pares helicoidais devem ter mãos opostas e exigem consideração do empuxo axial: <span class="formula">F<sub>a</sub> = F<sub>t</sub> tan β</span> Dimensionar rolamentos localizadores, espaçadores e pré-carga; incluir medida axial quando necessário. Fargère e Velex [7], Cohen et al. [21] e o kit GUNT [15] documentam diferenças de apoio e geometria entre tipos.</p>
+<p>Uma solução simples é uma base de referências fixas e blocos removíveis: pinos de precisão posicionam cada conjunto, e calços retificados definem o centro. Um rasgo facilita o ajuste inicial, mas deve ser bloqueado em superfícies rígidas antes do ensaio para não contaminar a stiffness medida.</p>
+</section>
+
+<section id="oleo">
+<h2>Óleo lubrificante</h2>
+<p><strong>Recomendação:</strong> prever guarda e bandeja para salpico ou pequeno banho, com nível verificável, enchimento/dreno e sensor de temperatura. Para ensaio dinâmico com engrenagens metálicas, usar condição lubrificada e reprodutível; evitar operação a seco em rotação/carga significativas. Escolher óleo após definir material, módulo, velocidade, carga e temperatura, não apenas copiar o kit didático.</p>
+<p>O óleo altera o resultado. Russo et al. [5] mediram o efeito de squeeze do filme entre dentes durante separação e observaram amortecimento dos impactos de rattle; modelos sem esse efeito podem superestimá-los. GUNT [15] trata óleo/graxa como variável de vibração. Em mancais hidrodinâmicos, o filme altera rigidez e amortecimento do apoio [7, 8].</p>
+<ul>
+<li>Fixar óleo, nível e aquecimento para a linha de base; registar tipo, viscosidade nominal, lote, temperatura e estabilização.</li>
+<li>Comparar lubrificado e condição alternativa em ensaios controlados, com torque, velocidade, backlash e temperatura comparáveis. Teste seco só em baixa carga/baixa velocidade se for tecnicamente seguro.</li>
+<li>Na stiffness quasiestática, manter a condição superficial constante; registrar histerese/atrito e separar efeito viscoso da rigidez elástica do dente.</li>
+<li>Banho gera arrasto e calor; salpico tende a ser mais simples em baixa potência. Se houver aquecimento relevante, monitorar temperatura e avaliar circulação/resfriamento.</li>
+</ul>
+<div class="note">Barthod et al. [24] ensaiaram sem óleo para isolar impactos de rattle. Isso serve para estudar um mecanismo específico, não para definir como seca a operação normal da bancada.</div>
+</section>
+
+<section id="etapas">
+<h2>Plano de desenvolvimento</h2>
+<ol>
+<li><strong>V1 — par reto de referência:</strong> um estágio, motor/inversor, freio/carga, suporte rígido, dois encoders, torque, acelerômetros nos mancais e tacômetro. Calibrar alinhamento, runout, sincronismo, repetibilidade e ruído estrutural.</li>
+<li><strong>Backlash e stiffness:</strong> reversão de torque para folga; curva quase-estática torque/deflexão em fases conhecidas. Repetir desmontagem/remontagem para quantificar incerteza e influência do centro.</li>
+<li><strong>Vibração operacional:</strong> percorrer pontos definidos de rotação/carga e registrar TE, GMF/harmônicos, temperatura e acelerações. Validar modelo de referência e identificar ressonâncias da base.</li>
+<li><strong>Vibração direta:</strong> sondas X/Y para órbita do eixo; acelerômetro rotativo no gear por telemetria quando a pergunta exigir aceleração direta. Comparar sensor no componente com sensor fixo no mancal, como Knoll et al. [2].</li>
+<li><strong>V2 — par helicoidal:</strong> trocar par/cartuchos, medir centro, alinhamento e backlash, verificar empuxo axial e adicionar canal axial. Controlar centro, apoio, lubrificante e torque para interpretar diferenças.</li>
+<li><strong>Extensões:</strong> shaker para stiffness dinâmica/rattle [12, 24], strain gauges ou DIC para validação local [3, 23], e só depois caixa, acústica ou back-to-back para carga alta/NVH [1, 9, 10, 20].</li>
+</ol>
+<div class="good"><strong>Conclusão:</strong> a bancada aberta de estágio único oferece o melhor equilíbrio pedido. Priorizar acesso ao par, encoders sincronizados, torque medido, apoios trocáveis com centro controlado e pontos de instrumentação para eixo/gear. Pares intercambiáveis são viáveis se centro, empuxo axial e backlash forem projetados e medidos em conjunto.</div>
+</section>
+
+<section id="referencias">
+<h2>Referências e fontes</h2>
+<p class="small">As fontes abaixo apontam para DOI, repositório institucional ou página oficial. PDFs locais também estão indicados na coluna “PDF local / acesso” da planilha. Catálogos, dados e o documento Zenodo são fontes técnicas, não artigos revisados por pares.</p>
+<ol class="refs">
+<li id="r01">Sepp, S. et al. (2023). <em>Acoustical behavior of periodic flank modifications under dynamic operating conditions.</em> <a href="https://doi.org/10.1007/s10010-023-00685-4" target="_blank" rel="noopener">DOI 10.1007/s10010-023-00685-4</a>.</li>
+<li id="r02">Knoll, E. et al. (2024). <em>Evaluation of vibration behavior at different sensing positions on gearboxes.</em> <a href="https://doi.org/10.1007/s10010-024-00750-6" target="_blank" rel="noopener">DOI 10.1007/s10010-024-00750-6</a>.</li>
+<li id="r03">Hotait, M. A.; Kahraman, A. (2013). <em>Experiments on the relationship between the dynamic transmission error and the dynamic stress factor of spur gear pairs.</em> <a href="https://doi.org/10.1016/j.mechmachtheory.2013.07.006" target="_blank" rel="noopener">DOI 10.1016/j.mechmachtheory.2013.07.006</a>.</li>
+<li id="r04">Vieira, M. F.; Santos, G.; Rego, R. (2023). <em>Back-to-back test rig instrumentation for transmission error measurement.</em> <a href="https://www.abcm.org.br/proceedings/view/COB2023/0433" target="_blank" rel="noopener">COBEM 2023, ABCM</a>.</li>
+<li id="r05">Russo, R.; Brancati, R.; Rocca, E. (2009). <em>Experimental investigations about the influence of oil lubricant between teeth on the gear rattle phenomenon.</em> <a href="https://doi.org/10.1016/j.jsv.2008.10.008" target="_blank" rel="noopener">DOI 10.1016/j.jsv.2008.10.008</a>.</li>
+<li id="r06">Rocca, E.; Russo, R. (2011). <em>Theoretical and experimental investigation into the influence of the periodic backlash fluctuations on the gear rattle.</em> <a href="https://doi.org/10.1016/j.jsv.2011.04.008" target="_blank" rel="noopener">DOI 10.1016/j.jsv.2011.04.008</a>.</li>
+<li id="r07">Fargère, R.; Velex, P. (2012). <em>Some Experimental and Simulation Results on the Dynamic Behaviour of Spur and Helical Geared Transmissions with Journal Bearings.</em> <a href="https://doi.org/10.1155/2012/163575" target="_blank" rel="noopener">DOI 10.1155/2012/163575</a>.</li>
+<li id="r08">Yin, M.; Chen, G.; Su, H. (2016). <em>Theoretical and experimental studies on dynamics of double-helical gear system supported by journal bearings.</em> <a href="https://doi.org/10.1177/1687814016646977" target="_blank" rel="noopener">DOI 10.1177/1687814016646977</a>.</li>
+<li id="r09">Wischmann, S. et al. (2025). <em>Validation of models for calculating the NVH behavior of gearbox systems in an elastic multibody simulation.</em> <a href="https://doi.org/10.1007/s10010-025-00816-z" target="_blank" rel="noopener">DOI 10.1007/s10010-025-00816-z</a>.</li>
+<li id="r10">Oswald, F. B. et al. (1992). <em>Comparison of Analysis and Experiment for Gearbox Noise.</em> <a href="https://ntrs.nasa.gov/citations/19920016153" target="_blank" rel="noopener">NASA NTRS 19920016153</a>.</li>
+<li id="r11">Oswald, F. B. et al. (1992). <em>Effect of Operating Conditions on Gearbox Noise.</em> <a href="https://engagedscholarship.csuohio.edu/enme_facpub/6/" target="_blank" rel="noopener">Cleveland State University repository</a>.</li>
+<li id="r12">Rosso, C.; Bruzzone, F.; Lisitano, D.; Bonisoli, E. (2024). <em>A Methodology for Measuring Actual Mesh Stiffness in Gear Pairs.</em> <a href="https://doi.org/10.3390/vibration7010011" target="_blank" rel="noopener">DOI 10.3390/vibration7010011</a>; <a href="https://iris.polito.it/handle/11583/2986559" target="_blank" rel="noopener">Politecnico di Torino repository</a>.</li>
+<li id="r13">Vibration Analysis Laboratory, UNIMORE. <em>Experimental Setup: instalação para medição de erro de transmissão.</em> <a href="https://www.vibrazioni.unimore.it/site/home/test-facilities/experimental-setup.html" target="_blank" rel="noopener">Página institucional</a>.</li>
+<li id="r14">Flek, J.; Karas, T.; Kaderabek, P. (2025). <em>Open-Source Based System for Experimental Gear Mesh Stiffness Evaluation.</em> <a href="https://doi.org/10.2478/scjme-2025-0034" target="_blank" rel="noopener">DOI 10.2478/scjme-2025-0034</a>.</li>
+<li id="r15">GUNT Gerätebau. <em>PT 500.15 — Damage to gears kit.</em> <a href="https://www.gunt.de/en/products/damage-to-gears-kit/052.50015/pt500-15/glct-1%3Apa-148%3Apr-1033" target="_blank" rel="noopener">Página oficial</a>; <a href="https://www.gunt.de/images/datasheet/1033/PT-500.15-Damage-to-gears-kit-gunt-1033-pdf_1_en-GB.pdf" target="_blank" rel="noopener">folha de dados PDF</a>.</li>
+<li id="r16">SpectraQuest. <em>Gearbox Dynamics Simulator (GDS).</em> <a href="https://spectraquest.com/gearbox-dynamics-simulator/" target="_blank" rel="noopener">Página técnica do fabricante</a>.</li>
+<li id="r17">Horváth, K. (2026). <em>Conceptual Design Framework for a Modular Gear-Pair Validation Test Rig for Transmission Error and Gear Dynamics Research.</em> Documento conceitual V1.0. <a href="https://doi.org/10.5281/zenodo.18921850" target="_blank" rel="noopener">DOI 10.5281/zenodo.18921850</a>.</li>
+<li id="r18">PHM Society (2009). <em>PHM09 Data Challenge — Apparatus.</em> <a href="https://phmsociety.org/data-analysis-competition/apparatus/" target="_blank" rel="noopener">Documentação experimental</a>.</li>
+<li id="r19">PHM Society. <em>Public Data Sets.</em> <a href="https://phmsociety.org/public-data-sets/" target="_blank" rel="noopener">Repositório de dados</a>.</li>
+<li id="r20">Abruzzo, M. et al. (2021). <em>Dynamic behavior of a power re-circulating gear test rig including periodic variation of mesh stiffness and static transmission error.</em> <a href="https://doi.org/10.1016/j.mechmachtheory.2021.104247" target="_blank" rel="noopener">DOI 10.1016/j.mechmachtheory.2021.104247</a>; <a href="https://arpi.unipi.it/handle/11568/1081953" target="_blank" rel="noopener">Università di Pisa repository</a>.</li>
+<li id="r21">Cohen, R. et al. (2024). <em>A novel method for helical gear modeling with an experimental validation.</em> <a href="https://doi.org/10.1007/s11071-024-09465-3" target="_blank" rel="noopener">DOI 10.1007/s11071-024-09465-3</a>.</li>
+<li id="r22">Hou, S. et al. (2024). <em>Research on the model of staggered tooth phase to reduce vibration of single-stage gear transmission system: Theoretical analysis and experiments.</em> <a href="https://doi.org/10.1371/journal.pone.0297936" target="_blank" rel="noopener">DOI 10.1371/journal.pone.0297936</a>.</li>
+<li id="r23">Raghuwanshi, N. K.; Parey, A. (2017). <em>Experimental measurement of spur gear mesh stiffness using digital image correlation technique.</em> <a href="https://doi.org/10.1016/j.measurement.2017.07.034" target="_blank" rel="noopener">DOI 10.1016/j.measurement.2017.07.034</a>.</li>
+<li id="r24">Barthod, M. et al. (2007). <em>Experimental study of gear rattle excited by a multi-harmonic excitation.</em> <a href="https://doi.org/10.1016/j.apacoust.2006.04.011" target="_blank" rel="noopener">DOI 10.1016/j.apacoust.2006.04.011</a>.</li>
+<li id="r25">Iwatubo, T. et al. (1986). <em>Coupled Lateral-Torsional Vibration of a Rotor System Trained by Gears: 5th Report: Comparison with the Experimental Results.</em> <a href="https://doi.org/10.1299/kikaic.52.2343" target="_blank" rel="noopener">DOI 10.1299/kikaic.52.2343</a>. PDF local escaneado; avaliação incompleta.</li>
+</ol>
+</section>
+</main>
+<footer class="footer">Elaborado a partir dos arquivos em <strong>Artigos</strong>, dos links catalogados e de páginas institucionais/fabricantes. É um parecer de concepção; dimensionar eixos, rolamentos, freio, guarda e aquisição após definir faixas de rotação, torque, número de dentes e módulo.</footer>
+</div></body>
+</html>
